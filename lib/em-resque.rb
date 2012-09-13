@@ -16,7 +16,7 @@ module EM::Resque
              else
                server, namespace = server.split('/', 2)
                host, port, db = server.split(':')
-               {:host => host, :port => port, :password => uri.password, :thread_safe => true, :db => db}
+               {:host => host, :port => port, :password => uri.password, :thread_safe => true}
              end
 
       namespace ||= :resque

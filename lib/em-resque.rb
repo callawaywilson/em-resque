@@ -12,11 +12,11 @@ module EM::Resque
     when String
       opts = if server =~ /redis\:\/\//
                uri = URI.parse(server)
-               {:host => uri.host, :port => uri.port}
+               {:host => uri.host, :port => uri.port, :password => uri.password}
              else
                server, namespace = server.split('/', 2)
                host, port, db = server.split(':')
-               {:host => host, :port => port, :thread_safe => true, :db => db}
+               {:host => host, :port => port, :password => uri.password, :thread_safe => true, :db => db}
              end
 
       namespace ||= :resque
